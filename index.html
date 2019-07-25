@@ -4,14 +4,11 @@
   <title>Article Reader Project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
-    .data{
-      border-radius: 50%;
-      border: 1px solid;
-      width: 30%;
-      padding: 100px 10px 100px 10px;
-      background-color: #dedede;
+    .coustom{
+    box-shadow: 0px 0px 6px 0px;
+    padding: 10px;
     }
   </style>
 </head>
@@ -22,21 +19,30 @@
   <form action="/action_page.php" name="summation_form" id="summation_form">
     <div class="form-group">
       <label for="value1">Value 1</label>
-      <textarea class="form-control" id="article" placeholder="Enter you article" name="value1">
+      <textarea class="form-control" id="article" placeholder="Enter you article" name="value1" rows="10"></textarea>
       <span class="text-danger" id="error1"></span>
     </div>
+    <input type="submit" value="Save" class="btn btn-large btn-success pr-4 pl-4"/>
   </form>
 </div>
 
-<div class="wrapper text-center mt-70" style="margin-top: 80px;">
+<div class="wrapper text-center mt-4">
   <div class="container">
-    <div class="data" width="70%">
-      <p id="article">sdfsa sfasdf ad safasdf sd fasd asd fasdf asdf sdfa sfasfas fas dsf asdf asfsd fsafd asdf asdf df asdf sadf asdf asdfs afd asf sadf asdf asd fasfd sad fsafasffsad fasdf asfsa d</h3>
-    </div>
+      <div class="row">
+	   <div class="col-md-4 coustom">
+	  	<p>kasdj flkf skldf sklf sk fsalkf jsdlk fsdljk fjslk fslkf slk fjslk fslk fjslk fjslk fslk fsjlkfj sklf asklfj lskfj lskf sklf j</p>
+	   </div>
+          <div class="col-md-4 coustom">
+	  	<p>kasdj flkf skldf sklf sk fsalkf jsdlk fsdljk fjslk fslkf slk fjslk fslk fjslk fjslk fslk fsjlkfj sklf asklfj lskfj lskf sklf j</p>
+	   </div>
+	   <div class="col-md-4 coustom">
+	  	<p>kasdj flkf skldf sklf sk fsalkf jsdlk fsdljk fjslk fslkf slk fjslk fslk fjslk fjslk fslk fsjlkfj sklf asklfj lskfj lskf sklf j</p>
+	   </div>
+      </div>
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
