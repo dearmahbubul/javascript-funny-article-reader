@@ -7,49 +7,51 @@ let Article = function(event){
        rand1 = Math.floor((Math.random() * 1000) + 1);
        rand2 = Math.floor((Math.random() * 1000) + 1);
        rand = rand1 + rand2;
-       html = '<div class="col-md-4 coustom" onclick="show('+rand+')"><div class="progress"><div class="'+rand+' progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div></div><p id="'+rand+'">'+article+'</p><span class="play">Read</span></div>';
+       html = '<div class="col-md-4 coustom" onclick="show('+rand+')"><p id="'+rand+'">'+article+'</p><span class="play">Read</span></div>';
        document.getElementById('articles').insertAdjacentHTML('afterbegin', html);
-   }else{
-      alert("kita baa");
+       swal("Success", "Article Saved!", "success");
    }
 }
 function show(id){
-   //let time = parseInt(prompt("How many article do you want to read per minute?"));
+   //let time = parseInt(prompt("How many word do you want to read per minute?"));
+   let progress,time,second,content,speed,passSecond;
+   const minute = 60;
    let article = document.getElementById(id).textContent;
-   document.querySelector('.play').style.visibility = "hidden";
-   document.getElementById(id).textContent='';
-   //var elem = document.getElementsByClassName(id);   
-   var counter = 10;
-   var newYearCountdown = setInterval(function(){
-      console.log(counter);
-      counter--;
-      if (counter === 0) {
-        console.log("HAPPY NEW YEAR!!");
-        clearInterval(newYearCountdown);
-      }
-    }, 1000);
-   
-   //alert(article);
-   //var width = 0;
-   //var interval = setInterval(frame(), 10);
-   //function frame() {
-      //document.getElementById(id).append=article;
-      //console.log(width);
-      //width++;
-     /* if (width == 100) {
-         clearInterval(interval);
-         document.getElementsByClassName('play').css="display:block";
-      } else {
-         alert("Hello world people");
-         //width++; 
-         //elem.style.width = width + '%'; 
-         document.getElementById(id).append=article;
-      }*/
-   
+   contents = article.split(" ");
+   swal("How many word do you want to read per minute?", {
+      content: "input",
+    })
+    .then((value) => {
+       if(value > 0){
+         time = value;
+         second = 0;
+         speed = (60*1000)/time;
+         passSecond = 0;
+         $('#exampleModalCenter').modal('show');
+         var newYearCountdown = setInterval(function(){
+               if(contents[second+2] === undefined){
+                  clearInterval(newYearCountdown);
+               }
+               document.querySelector('.modal-body').innerHTML = contents[second];
+               second++;
+               passSecond = (passSecond+(speed/1000));
+               document.querySelector('.modal-title').innerHTML = 'Word No: '+second +'  Time: '+ passSecond+' s';
 
+         }, speed);
+      }else{
+         swal("Error", "Value Should be greater than 0!", "error");
+      }
+    });
 }
-/*document.getElementById('article1').addEventListener('click', function(){
-   let article = parseInt(prompt("How many article do you want to read per minute?"));
-   alert(article);
-});*/
+function stopRead()
+{
+   $('#exampleModalCenter').modal('hide');
+   clearInterval();
+}
 document.getElementById('save').addEventListener('click',Article);
+/*swal("Write something here:", {
+   content: "input",
+ })
+ .then((value) => {
+   swal(`You typed: ${value}`);
+ });*/
