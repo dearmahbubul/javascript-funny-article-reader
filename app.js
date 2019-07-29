@@ -10,8 +10,9 @@ let Article = function(event){
         html = '<div class="col-md-4 coustom" onclick="show('+rand+')"><p id="'+rand+'">'+article+'</p><span class="play">Read</span></div>';
         document.getElementById('articles').insertAdjacentHTML('afterbegin', html);
         swal("Success", "Article Saved!", "success");
+        document.getElementById('save').disabled = true;
     }
-}
+};
 function show(id){
     //let time = parseInt(prompt("How many word do you want to read per minute?"));
     let progress,time,second,content,speed,passSecond;
@@ -45,12 +46,13 @@ function show(id){
 }
 document.getElementById('save').addEventListener('click',Article);
 document.getElementById('article').addEventListener('change',function () {
+    alert("Okay");
     if(document.getElementById('article').value != '')
     {
         document.getElementById('save').disabled = false;
     }
     else
     {
-        document.getElementById('save').disabled = false;
+        document.getElementById('save').disabled = true;
     }
 });
