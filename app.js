@@ -33,6 +33,14 @@ function show(id){
                     if(contents[second+2] === undefined){
                         clearInterval(newYearCountdown);
                     }
+                    $('#exampleModalCenter .modal-footer button').on('click', function(event) {
+                        var $button = $(event.target); // The clicked button
+
+                        $(this).closest('.modal').one('hidden.bs.modal', function() {
+                            document.querySelector('.modal-body').innerHTML = '';
+                            clearInterval(newYearCountdown);
+                        });
+                    });
                     document.querySelector('.modal-body').innerHTML = contents[second];
                     second++;
                     passSecond = (passSecond+(speed/1000));
@@ -46,7 +54,6 @@ function show(id){
 }
 document.getElementById('save').addEventListener('click',Article);
 document.getElementById('article').addEventListener('change',function () {
-    alert("Okay");
     if(document.getElementById('article').value != '')
     {
         document.getElementById('save').disabled = false;
