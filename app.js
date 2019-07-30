@@ -37,6 +37,7 @@ function show(id){
                         var $button = $(event.target); // The clicked button
 
                         $(this).closest('.modal').one('hidden.bs.modal', function() {
+                            document.querySelector('.modal-title').innerHTML = '';
                             document.querySelector('.modal-body').innerHTML = '';
                             clearInterval(newYearCountdown);
                         });
